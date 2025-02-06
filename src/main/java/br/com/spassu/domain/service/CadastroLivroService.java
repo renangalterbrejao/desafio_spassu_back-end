@@ -23,7 +23,7 @@ public class CadastroLivroService {
 	
 	private static final String MSG_LIVRO_EM_USO = "Livro de código %d não pode ser removido, pois está em uso";
 	private static final String MSG_ERRO_LIVRO = "O livro não pode ser incluido pois houve problema de"
-			+ " integração de dados. Verifique todos os Autores e Assuntos "
+			+ " integração de dados. Verifique se todos os Autores e Assuntos "
 			+ "	relacionados já estão persistidos ";
 	
 	@Autowired
