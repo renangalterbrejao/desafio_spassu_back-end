@@ -17,5 +17,6 @@ public class LivrosConsolidado {
 	private String editora;
 	private String autorNome;
 	private BigDecimal preco;
+	private String assuntoDescricao;
 
 }

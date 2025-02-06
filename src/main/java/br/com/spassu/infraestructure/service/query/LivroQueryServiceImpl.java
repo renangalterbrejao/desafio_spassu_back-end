@@ -19,17 +19,30 @@ public class LivroQueryServiceImpl implements LivroQueryService {
 	private EntityManager entityManager;
 	
 	public List<LivrosConsolidado> consultarLivrosConsolidado() {
+		
 	    String query = "SELECT * FROM view_livro_consolidado";
 	    List<Object[]> resultados = entityManager.createNativeQuery(query).getResultList();
 	    List<LivrosConsolidado> livrosConsolidado = new ArrayList<>();
+	    String autorNomeAnterior = null;
+	    
 	    for (Object[] resultado : resultados) {
 	        LivrosConsolidado livro = new LivrosConsolidado();
 	        livro.setTitulo((String) resultado[1]);
 	        livro.setEditora((String) resultado[2]);
-	        livro.setAutorNome((String) resultado[6]);
+	        String autorNomeAtual = (String) resultado[6];
+	        
+	        if (autorNomeAtual.equals(autorNomeAnterior)) {
+	            livro.setAutorNome("");
+	        } else {
+	            livro.setAutorNome(autorNomeAtual);
+	            autorNomeAnterior = autorNomeAtual;
+	        }
+	        
 	        livro.setPreco((BigDecimal) resultado[5]);
+	        livro.setAssuntoDescricao((String) resultado[8]);
 	        livrosConsolidado.add(livro);
 	    }
+	    
 	    return livrosConsolidado;
 	}
 

@@ -15,4 +15,6 @@ FROM
   LEFT JOIN livro_autor la ON l.codl = la.livro_codl
   LEFT JOIN autor a ON la.autor_codau = a.codau
   LEFT JOIN livro_assunto ls ON l.codl = ls.livro_codl
-  LEFT JOIN assunto asu ON ls.assunto_codas = asu.codas;
+  LEFT JOIN assunto asu ON ls.assunto_codas = asu.codas
+ORDER BY 
+  LOWER(a.nome);
