@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.spassu.domain.exception.AssuntoNaoEncontradoException;
 import br.com.spassu.domain.exception.CampoExcedeuLimiteException;
 import br.com.spassu.domain.exception.EntidadeEmUsoException;
+import br.com.spassu.domain.exception.NegocioException;
 import br.com.spassu.domain.model.Assunto;
+import br.com.spassu.domain.model.Livro;
 import br.com.spassu.domain.repository.AssuntoRepository;
 
 @Service
@@ -23,9 +25,7 @@ public class CadastroAssuntoService {
 	@Transactional
     public Assunto salvar(Assunto assunto) {
 		
-		if(assunto.getDescricao().length() > 20) {
-			throw new CampoExcedeuLimiteException("descrição", 20);
-		}
+		verificarLimiteCampo(assunto);
 		
         return assuntoRepository.save(assunto);
     }
@@ -33,6 +33,15 @@ public class CadastroAssuntoService {
     public Assunto buscarOuFalhar(Long assuntoId) {
         return assuntoRepository.findById(assuntoId)
             .orElseThrow(() -> new AssuntoNaoEncontradoException(assuntoId));
+    }
+    
+    @Transactional
+    public Assunto alterar(Assunto assunto) {
+    	
+    	verificarLimiteCampo(assunto);
+    	
+    	return assuntoRepository.save(assunto);	
+    	
     }
     
     @Transactional
@@ -53,5 +62,11 @@ public class CadastroAssuntoService {
 
 		}
 	}
+    
+    private void verificarLimiteCampo(Assunto assunto) {
+    	if(assunto.getDescricao().length() > 20) {
+			throw new CampoExcedeuLimiteException("descrição", 20);
+		}
+    }
 
 }

@@ -26,6 +26,7 @@ import br.com.spassu.domain.model.Livro;
 import br.com.spassu.domain.repository.LivroRepository;
 import br.com.spassu.domain.service.CadastroLivroService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -47,6 +48,7 @@ public class LivroController {
 	@Autowired
 	private LivroInputDisassembler livroInputDisassembler;
 	
+	@ApiOperation("Lista todos os livros")
 	@GetMapping 
 	public List<LivroModel> listar() {
 		  
@@ -56,6 +58,7 @@ public class LivroController {
 		return livroModelAssembler.toCollectionModel(todosLivros); 
 	}
 	
+	@ApiOperation("Lista todos os livros por ID")
 	@GetMapping("/{livroId}")
 	public LivroModel buscar(@PathVariable("livroId") Long livroId) {
 		
@@ -67,6 +70,7 @@ public class LivroController {
 		
 	}
 	
+	@ApiOperation("Adiciona um livro")
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public LivroModel adicionar(@RequestBody @Valid LivroInput livroInput) {
@@ -81,6 +85,7 @@ public class LivroController {
 	        
 	}
 	
+	@ApiOperation("Altera um livro")
 	@PutMapping("/{livroId}")
 	public LivroModel atualizar(@PathVariable Long livroId, 
 			@RequestBody @Valid LivroInput livroInput) {
@@ -95,6 +100,7 @@ public class LivroController {
 		
 	}
 	
+	@ApiOperation("Deleta um livro")
 	@DeleteMapping("/{livroId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remover(@PathVariable Long livroId) {

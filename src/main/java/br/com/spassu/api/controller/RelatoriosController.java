@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.spassu.domain.service.LivroReportService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @Api(tags = "Relatorios")
 @RestController
@@ -21,6 +22,8 @@ public class RelatoriosController {
 	@Autowired
 	private LivroReportService livroReportService;
 	
+	@CrossOrigin(origins = "*")
+	@ApiOperation("Emite um relatório consolidado PDF de livros")
 	@GetMapping(path = "/livros-consolidado-pdf", produces = MediaType.APPLICATION_PDF_VALUE)
 	public ResponseEntity<byte[]> emitirLivrosConsolidados() {
 		
