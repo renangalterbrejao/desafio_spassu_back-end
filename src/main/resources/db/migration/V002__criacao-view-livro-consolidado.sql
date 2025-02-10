@@ -1,4 +1,6 @@
-CREATE VIEW spassu.view_livro_consolidado AS
+DROP VIEW IF EXISTS view_livro_consolidado;
+
+CREATE VIEW view_livro_consolidado AS
 SELECT 
   l.codl,
   l.titulo,

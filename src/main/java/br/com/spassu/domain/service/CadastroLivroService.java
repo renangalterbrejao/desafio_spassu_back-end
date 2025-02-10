@@ -53,10 +53,10 @@ public class CadastroLivroService {
     	
     	if(livrosJaExistentes.isPresent()) {
     		throw new NegocioException(String.format
-		    				("O livro com titulo '%s' e editora '%s' já existe!", 
-		    						livro.getTitulo(), livro.getEditora()
-		    				)
-    					);
+    				("O livro com titulo '%s' e editora '%s' já existe!", 
+    						livro.getTitulo(), livro.getEditora()
+    				)
+				);
     	}
     	
     	try {

@@ -1,0 +1,17 @@
+{
+    "titulo": "Livro Alterado",
+    "editora": "Editora Abril 2",
+    "edicao": 9,
+    "anoPublicacao": 1615,
+    "preco": 20.00,
+    "idsAutores": [
+        {
+        "codAu": 1
+        }
+    ],
+    "idsAssuntos": [
+        {
+            "codAs": 1
+        }
+    ]
+}

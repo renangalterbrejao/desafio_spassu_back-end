@@ -64,7 +64,7 @@ public class AssuntoController {
 		return assuntoModelAssembler.toCollectionModel(todosAssuntos); 
 	}
 	
-	@ApiOperation("Lista todos os assuntos por ID")
+	@ApiOperation("Lista assunto por ID")
 	@GetMapping("/{assuntoId}")
 	public AssuntoModel buscar(@PathVariable("assuntoId") Long assuntoId) {
 		

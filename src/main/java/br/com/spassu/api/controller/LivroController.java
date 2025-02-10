@@ -58,7 +58,7 @@ public class LivroController {
 		return livroModelAssembler.toCollectionModel(todosLivros); 
 	}
 	
-	@ApiOperation("Lista todos os livros por ID")
+	@ApiOperation("Lista livro por ID")
 	@GetMapping("/{livroId}")
 	public LivroModel buscar(@PathVariable("livroId") Long livroId) {
 		

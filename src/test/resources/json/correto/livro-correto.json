@@ -1,0 +1,17 @@
+{
+    "titulo": "Livro Novo",
+    "editora": "Editora Abril",
+    "edicao": 9,
+    "anoPublicacao": 1615,
+    "preco": 20.00,
+    "idsAutores": [
+        {
+        "codAu": 1
+        }
+    ],
+    "idsAssuntos": [
+        {
+            "codAs": 1
+        }
+    ]
+}

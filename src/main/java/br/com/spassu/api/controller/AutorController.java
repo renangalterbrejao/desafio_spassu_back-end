@@ -61,7 +61,7 @@ public class AutorController {
 		return autorModelAssembler.toCollectionModel(todosAutores); 
 	}
 	
-	@ApiOperation("Lista todos os autores por ID")
+	@ApiOperation("Lista autor por ID")
 	@GetMapping("/{autorId}")
 	public AutorModel buscar(@PathVariable("autorId") Long autorId) {
 		
@@ -89,6 +89,7 @@ public class AutorController {
 	
 	@ApiOperation("Altera um autor")
 	@PutMapping("/{autorId}")
+	@ResponseStatus(HttpStatus.OK)
 	public AutorModel atualizar(@PathVariable Long autorId, 
 			@RequestBody @Valid AutorInput autorInput) {
 		
