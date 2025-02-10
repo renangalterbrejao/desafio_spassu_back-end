@@ -1,5 +1,7 @@
 package br.com.spassu.api.assembler;
 
+import java.util.HashSet;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,6 +20,8 @@ public class LivroInputDisassembler {
     }
     
     public void copyToDomainObject(LivroInput livroInput, Livro livro) {
+    	livro.setAutores(new HashSet<>());
+    	livro.setAssuntos(new HashSet<>());
         modelMapper.map(livroInput, livro);
     }
 

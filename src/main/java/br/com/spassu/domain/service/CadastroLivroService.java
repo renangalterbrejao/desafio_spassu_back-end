@@ -1,5 +1,6 @@
 package br.com.spassu.domain.service;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -41,6 +42,12 @@ public class CadastroLivroService {
     	/*Comentar para melhorar a performance*/
     	verificarSetarAutorAssunto(livro);
     	
+    	if (livro.getPreco().compareTo(BigDecimal.ZERO) == 0) {
+    		throw new NegocioException(String.format
+    				("O preço do livro não pode ser zero")
+				);
+    	}
+    	
     	Optional<Livro> livrosJaExistentes = livroRepository
     			.findBooksByTituloAndEditora(livro.getTitulo(), livro.getEditora());
     	
@@ -73,6 +80,12 @@ public class CadastroLivroService {
     	
     	/*Comentar para melhorar a performance*/
     	verificarSetarAutorAssunto(livro);
+    	
+    	if (livro.getPreco().compareTo(BigDecimal.ZERO) == 0) {
+    		throw new NegocioException(String.format
+    				("O preço do livro não pode ser zero")
+				);
+    	}
     	
     	try {
     		
